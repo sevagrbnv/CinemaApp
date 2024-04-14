@@ -78,10 +78,7 @@ dependencies {
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.kotlinx.coroutines.android)
 
-//    implementation (libs.dagger)
-//    ksp (libs.dagger.compiler)
-//    ksp (libs.dagger.android.processor)
-
-    implementation ("com.google.dagger:hilt-android:2.48.1")
-    ksp ("com.google.dagger:hilt-compiler:2.48.1")
+    // hilt
+    implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
 }

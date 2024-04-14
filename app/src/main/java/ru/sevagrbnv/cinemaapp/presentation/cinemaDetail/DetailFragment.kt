@@ -30,15 +30,6 @@ class DetailFragment : Fragment() {
 
     private val viewModel by viewModels<DetailViewModel>()
 
-//    private lateinit var viewModel: DetailViewModel
-//
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelFactory
-
-//    private val component by lazy {
-//        (requireActivity().application as App).component
-//    }
-
     private var openPrevFragment: OpenPrevFragment? = null
 
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
@@ -52,7 +43,6 @@ class DetailFragment : Fragment() {
     private val posterAdapter by lazy(LazyThreadSafetyMode.NONE) { PosterAdapter() }
 
     override fun onAttach(context: Context) {
-//        component.inject(this)
         super.onAttach(context)
         if (context is OpenPrevFragment) {
             openPrevFragment = context
@@ -68,8 +58,6 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        viewModel = ViewModelProvider(this, viewModelFactory)[DetailViewModel::class.java]
 
         viewModel.id = parseParam()
 

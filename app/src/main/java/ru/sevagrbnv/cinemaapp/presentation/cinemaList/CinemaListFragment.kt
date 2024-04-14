@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.google.android.material.snackbar.Snackbar
@@ -22,34 +20,18 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import ru.sevagrbnv.cinemaapp.R
 import ru.sevagrbnv.cinemaapp.databinding.FragmentCinemaListBinding
-import ru.sevagrbnv.cinemaapp.di.App
-//import ru.sevagrbnv.cinemaapp.presentation.ViewModelFactory
 import ru.sevagrbnv.cinemaapp.presentation.cinemaDetail.DetailFragment
 import java.net.UnknownHostException
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class CinemaListFragment : Fragment(), FilterListener, OnItemClickListener {
 
 
     private val viewModel by viewModels<CinemaListViewModel>()
-//    private lateinit var viewModel: CinemaListViewModel
-
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelFactory
-
-//    private val component by lazy {
-//        (requireActivity().application as App).component
-//    }
 
     private val binding by lazy { FragmentCinemaListBinding.inflate(layoutInflater) }
     private val cinemaAdapter by lazy(LazyThreadSafetyMode.NONE) { CinemaAdapter(this) }
     private val loaderStateAdapter by lazy(LazyThreadSafetyMode.NONE) { CinemaListLoaderStateAdapter { cinemaAdapter.retry() } }
-
-    override fun onAttach(context: Context) {
-//        component.inject(this)
-        super.onAttach(context)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,8 +42,6 @@ class CinemaListFragment : Fragment(), FilterListener, OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        viewModel = ViewModelProvider(this, viewModelFactory)[CinemaListViewModel::class.java]
 
         binding.recyclerView.apply {
             adapter = cinemaAdapter.withLoadStateFooter(footer = loaderStateAdapter)
@@ -122,7 +102,6 @@ class CinemaListFragment : Fragment(), FilterListener, OnItemClickListener {
                 ).show()
             } catch (e: Exception) {
                 binding.progressBar.isVisible = false
-                Log.e("123123", e.message.toString())
                 Snackbar.make(
                     requireActivity().findViewById(android.R.id.content),
                     "Error: ${e.message}",

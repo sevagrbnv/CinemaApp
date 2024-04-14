@@ -1,6 +1,5 @@
 package ru.sevagrbnv.cinemaapp.di
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,11 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
-
-//    @Binds
-//    @AppScope
-//    fun bindCinemaRepository(repository: CinemaRepositoryImpl): CinemaRepository
-
 
     @Singleton
     @Provides

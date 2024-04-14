@@ -1,6 +1,6 @@
 [versions]
 agp = "8.3.2"
-dagger = "2.51.1"
+hiltAndroid = "2.48.1"
 ksp = "1.9.10-1.0.13"
 fragmentKtx = "1.6.2"
 kotlin = "1.9.0"
@@ -30,9 +30,8 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
-dagger-android-processor = { module = "com.google.dagger:dagger-android-processor", version.ref = "dagger" }
-dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
